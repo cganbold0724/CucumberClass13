@@ -29,7 +29,7 @@ public class LoginSteps extends CommonMethods {
     public void user_enters_valid_admin_username_and_password() throws InterruptedException {
       //  WebElement usernameTextField = driver.findElement(By.id("txtUsername"));
        // usernameTextField.sendKeys("admin");
-        LoginPage login = new LoginPage();
+      //  LoginPage login = new LoginPage();
        sendText(login.usernameTextField, ConfigReader.getPropertyValue("username"));
 
       //  WebElement passwordTextField = driver.findElement(By.id("txtPassword"));
@@ -42,21 +42,21 @@ public class LoginSteps extends CommonMethods {
        // WebElement loginButton = driver.findElement(By.id("btnLogin"));
       //  loginButton.click();
       //  Thread.sleep(2000);
-        LoginPage login = new LoginPage();
+       // LoginPage login = new LoginPage();
         click(login.loginButton);
     }
 
     @Then("admin user is successfully logged in")
     public void admin_user_is_successfully_logged_in() {
         System.out.println("Test passed");
-        closeBrowser();
+       // closeBrowser();
     }
 
     @When("user enters ess username and password")
     public void user_enters_ess_username_and_password() {
      //   WebElement usernameTextField = driver.findElement(By.id("txtUsername"));
         // usernameTextField.sendKeys("admin");
-        LoginPage login = new LoginPage();
+     //   LoginPage login = new LoginPage();
         sendText(login.usernameTextField, "admin");
 
       //  WebElement passwordTextField = driver.findElement(By.id("txtPassword"));
@@ -70,11 +70,12 @@ public class LoginSteps extends CommonMethods {
         System.out.println("Test passed");
         closeBrowser();
     }
+
     @When("user enter invalid username and password")
     public void user_enter_invalid_username_and_password() {
       //  WebElement usernameTextField = driver.findElement(By.id("txtUsername"));
         // usernameTextField.sendKeys("admin");
-        LoginPage login = new LoginPage();
+     //   LoginPage login = new LoginPage();
         sendText(login.usernameTextField, "admi");
 
     //    WebElement passwordTextField = driver.findElement(By.id("txtPassword"));
