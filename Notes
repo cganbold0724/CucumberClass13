@@ -70,3 +70,29 @@ What is framework -
 
 POM - page object model is a design pattern in which we create object repository
 
+Class 3 -
+
+-- recap --
+    -- architecture of framework --
+    -- utils - to keep all the utilities of our project such as constants, config reader
+                common methods etc to reuse them.
+
+
+    -- steps - all step definitions can be found under this package for the gherkin
+    steps we used in feature file
+    -- Pages -- POM -- to implement object repository and functions.
+
+    Runner class - we use this class to execute all of our test cases
+
+For pre condition and post condition in cucumber we have 2 annotations
+
+Hooks -
+@Before - this one we use for pre condition
+@After - this one we use for post condition
+
+
+-- hooks should always be mentioned under steps package
+
+
+
+
