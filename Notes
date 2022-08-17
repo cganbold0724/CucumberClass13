@@ -94,5 +94,16 @@ Hooks -
 -- hooks should always be mentioned under steps package
 
 
+Background vs hooks
+
+Hooks are applicable to all feature files
+Background is applicable to just one feature file\
+
+Hooks execute first then background executes then scenario executes and in the
+end hooks executes again as post condition
+
+
+
+
 
 
