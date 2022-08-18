@@ -35,4 +35,11 @@ public class AddEmployeeSteps extends CommonMethods {
         sendText(addEmployeePage.middleName, middleName);
         sendText(addEmployeePage.lastName, lastName);
     }
+
+    @When("user enter {string} , {string} and {string}")
+    public void user_enter_and(String fn, String mn, String ln) {
+       sendText(addEmployeePage.firstName, fn);
+       sendText(addEmployeePage.middleName, mn);
+       sendText(addEmployeePage.lastName, ln);
+    }
 }

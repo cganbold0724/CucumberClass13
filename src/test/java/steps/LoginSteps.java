@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -87,6 +88,18 @@ public class LoginSteps extends CommonMethods {
     public void user_is_able_to_see_error_message() {
         System.out.println("Test failed");
        // closeBrowser();
+    }
+
+    @When("user enters different {string} and {string} and verify the {string}")
+    public void user_enters_different_and_and_verify_the(String uname, String pwd, String error) {
+        sendText(login.usernameTextField, uname);
+        sendText(login.passwordTextField, pwd);
+        click(login.loginButton);
+
+        String errorActual = login.errorMessage.getText();
+        Assert.assertEquals(errorActual, error);
+
+
     }
 
 }

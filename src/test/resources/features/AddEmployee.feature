@@ -19,6 +19,27 @@ Feature: This feature is  going to add employees in HRMS application
     And user clicks on save button
     Then employee added successfully
 
+  @dataprovider
+  Scenario Outline: Adding multiple employees from cucumber feature file
+    When user enter "<firstName>" , "<middleName>" and "<lastName>"
+    And user clicks on save button
+    Then employee added successfully
+    Examples:
+    |firstName|middleName|lastName|
+    |romid    |MS        |zarif   |
+    |rokan    |MS        |elisa   |
+    |mama     |tarindi   |jamu    |
+
+
+
+
+
+
+
+
+
+
+
 
 
 

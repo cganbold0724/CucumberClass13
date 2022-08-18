@@ -20,3 +20,13 @@ Feature: Login feature
     When user enter invalid username and password
     And user clicks on login button
     Then user is able to see error message
+
+    @login
+    Scenario Outline: Negative login test
+      When user enters different "<username>" and "<password>" and verify the "<error>"
+      Examples:
+        | username | password | error |
+        |admin     |xyz       |Invalid credentials|
+        |cristiano |Hum@n     |Invalid credentials|
+        |          |Hum@nhrm123|Username cannot be empty|
+        |admin     |           |Password cannot be empty|
