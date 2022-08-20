@@ -98,8 +98,6 @@ public class LoginSteps extends CommonMethods {
 
         String errorActual = login.errorMessage.getText();
         Assert.assertEquals(errorActual, error);
-
-
     }
 
 }

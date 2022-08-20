@@ -26,9 +26,18 @@ Feature: This feature is  going to add employees in HRMS application
     Then employee added successfully
     Examples:
     |firstName|middleName|lastName|
-    |romid    |MS        |zarif   |
-    |rokan    |MS        |elisa   |
-    |mama     |tarindi   |jamu    |
+    |romid1    |MS        |zarif   |
+    |rokan1   |MS        |elisa   |
+    |mama1    |tarindi   |jamu    |
+
+  @datatable
+  Scenario: Adding multiple employees using data table
+    When user adds multiple employees and verify they are added
+    |firstName|middleName|lastName|
+    |khryswana|MS        |jaman   |
+    |zamis    |MS        |Gaukhar |
+    |tamir    |MS        |microsoft|
+
 
 
 
