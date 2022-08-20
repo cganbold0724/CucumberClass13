@@ -4,9 +4,13 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utils.CommonMethods;
+import utils.Constants;
+import utils.ExcelReader;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.CheckedOutputStream;
 
 public class AddEmployeeSteps extends CommonMethods {
 
@@ -78,6 +82,36 @@ public class AddEmployeeSteps extends CommonMethods {
 
         }
 
+    }
+
+    @When("user adds multiple employees from excel file using {string} sheet and verify the employee has added")
+    public void user_adds_multiple_employees_from_excel_file_using_sheet_and_verify_the_employee_has_added(String sheetName) throws InterruptedException {
+
+       List<Map<String, String>> newEmployees = ExcelReader.excelListIntoMap(Constants.TEST_DATA_FILEPATH, sheetName);
+
+       Iterator<Map<String, String>> itr = newEmployees.iterator();
+       while (itr.hasNext()){
+           Map<String, String> mapNewEmp = itr.next();
+           sendText(addEmployeePage.firstName, mapNewEmp.get("firstName"));
+           sendText(addEmployeePage.middleName, mapNewEmp.get("middleName"));
+           sendText(addEmployeePage.lastName, mapNewEmp.get("lastName"));
+
+           sendText(addEmployeePage.photograph, mapNewEmp.get("photograph"));
+           if(!addEmployeePage.checkBox.isSelected()){
+               click(addEmployeePage.checkBox);
+           }
+
+           sendText(addEmployeePage.usernameEmployee, mapNewEmp.get("username"));
+           sendText(addEmployeePage.passwordEmployee, mapNewEmp.get("password"));
+           sendText(addEmployeePage.confirmPasswordEmployee, mapNewEmp.get("confirmPassword"));
+
+           click(addEmployeePage.saveButton);
+
+
+           //assertion in homework
+           Thread.sleep(2000);
+           click(dash.addEmployeeOption);
+       }
     }
 
 }

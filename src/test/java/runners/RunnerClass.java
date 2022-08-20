@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
         //irrelevant or unreadable character in it
         //recommended is, set it to true always
         monochrome = true,
-        tags = "@dashboard"
+        tags = "@excel"
 )
 public class RunnerClass {
 
