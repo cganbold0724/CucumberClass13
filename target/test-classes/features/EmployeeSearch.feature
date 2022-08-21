@@ -7,7 +7,7 @@ Feature: Employee search
     When user clicks on PIM option
     And user clicks on employee list option
 
-  @smoke @sprint29 @regression
+  @smoke @sprint2 @regression
   Scenario: Search employee by id
     #Given user is navigated to HRMS application
     When user enters valid employee id
