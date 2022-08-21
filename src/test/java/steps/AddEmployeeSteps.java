@@ -3,6 +3,9 @@ package steps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utils.CommonMethods;
 import utils.Constants;
 import utils.ExcelReader;
@@ -105,8 +108,38 @@ public class AddEmployeeSteps extends CommonMethods {
            sendText(addEmployeePage.passwordEmployee, mapNewEmp.get("password"));
            sendText(addEmployeePage.confirmPasswordEmployee, mapNewEmp.get("confirmPassword"));
 
+           String empIdValue = addEmployeePage.empIdLoc.getAttribute("value");
+           System.out.println(empIdValue);
+
            click(addEmployeePage.saveButton);
 
+           //till this point we have added the employee and captured the emp id
+           Thread.sleep(4000);
+         //  click(dash.employeeListOption);
+           jsClick(dash.employeeListOption);
+           Thread.sleep(2000);
+           sendText(emp.idEmployeeSearch, empIdValue);
+           click(emp.searchButton);
+
+           //verify the details of my employee
+           //verifying firstname middlename and lastname
+
+         List<WebElement> rowData =  driver.findElements(By.xpath("//table[@id='resultTable']/tbody/tr"));
+
+         for (int i=0; i<rowData.size(); i++){
+             System.out.println("I am inside the loop");
+
+             //this line is going to return text of every single row for the element available in it
+            String rowText = rowData.get(i).getText();
+            System.out.println(rowText);
+
+           String expectedData =  empIdValue + " " + mapNewEmp.get("firstName") + " " +
+                   mapNewEmp.get("middleName") + " " + mapNewEmp.get("lastName");
+
+           System.out.println(expectedData);
+           Assert.assertEquals(expectedData, rowText);
+
+         }
 
            //assertion in homework
            Thread.sleep(2000);
