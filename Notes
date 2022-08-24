@@ -186,6 +186,17 @@ Class - 7
    -- generating a report that can have a screenshot in it
    -- we have to add a plugin - in pom.xml
 
+Rerun plugin - we use this plugin in runner class to capture the details of failed
+test cases during execution and then we use failed runner class to execute only failed
+test cases.
+
+
+To run the code from cmd/terminal -
+
+mvn clean = to clean the project
+mvn test = to execute the scripts
+mvn clean verify -Dcucumber.filter.tags="@tagname" to override the tag from cmd
+
 
 
 
