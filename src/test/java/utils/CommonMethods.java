@@ -106,6 +106,7 @@ public class CommonMethods extends PageInitializer {
         return picBytes;
     }
 
+    //to get the time in specific format so that we can add it in the name of screenshot
     public static String getTimeStamp(String pattern){
         Date date = new Date();
         //to format the date according to the choice of our own

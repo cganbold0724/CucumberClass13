@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
         tags = "@sprint29",
         //when you use pretty keyword under plugins, it shows all the steps which you
         //executed in console
-        plugin = {"pretty", "html:target/cucumber.html"}
+        plugin = {"pretty", "html:target/cucumber.html", "json:target/cucumber.json"}
 )
 public class RunnerClass {
 
