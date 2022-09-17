@@ -7,21 +7,17 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import pages.AddEmployeePage;
-import utils.CommonMethods;
-import utils.Constants;
-import utils.ExcelReader;
+import utils.*;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.CheckedOutputStream;
 
 public class AddEmployeeSteps extends CommonMethods {
 
-    String firstName;
-    String lastName;
-    String id;
+    String firstNameFromUI;
+    String lastNameFromUI;
+    String idFromUI;
     @When("user clicks on add employee option")
     public void user_clicks_on_add_employee_option() {
         click(dash.addEmployeeOption);
@@ -47,8 +43,8 @@ public class AddEmployeeSteps extends CommonMethods {
 
     @When("user enters {string} , {string} and {string}")
     public void user_enters_and(String firstName, String middleName, String lastName) {
-        this.firstName=firstName;
-        this.lastName=lastName;
+        this.firstNameFromUI =firstName;
+        this.lastNameFromUI =lastName;
         sendText(addEmployeePage.firstName, firstName);
         sendText(addEmployeePage.middleName, middleName);
         sendText(addEmployeePage.lastName, lastName);
@@ -156,15 +152,23 @@ public class AddEmployeeSteps extends CommonMethods {
 
     @And("user grabs Id")
     public void userGrabsId() {
-     id= addEmployeePage.empIdLoc.getAttribute("value");
+     idFromUI = addEmployeePage.empIdLoc.getAttribute("value");
 
     }
 
 
+    // break till 11:50
     @Then("fetch the data from backend and verify it")
     public void fetchTheDataFromBackendAndVerifyIt() {
-        System.out.println(firstName);
-        System.out.println(lastName);
-        System.out.println(id);
+
+        String query=DbQueries.FETCH_FNAME_LNAME+ idFromUI +"'";
+        List<Map<String,String>> dbData= DbUtils.fetchDbData(query);
+        String firstNameFromDb=dbData.get(0).get("emp_firstname");
+        String lastNameFromDb=dbData.get(0).get("emp_lastname");
+
+        Assert.assertEquals(firstNameFromUI,firstNameFromDb);
+        Assert.assertEquals(lastNameFromUI,lastNameFromDb);
+
+
     }
 }
