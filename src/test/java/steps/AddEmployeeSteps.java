@@ -1,11 +1,13 @@
 package steps;
 
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pages.AddEmployeePage;
 import utils.CommonMethods;
 import utils.Constants;
 import utils.ExcelReader;
@@ -17,6 +19,9 @@ import java.util.zip.CheckedOutputStream;
 
 public class AddEmployeeSteps extends CommonMethods {
 
+    String firstName;
+    String lastName;
+    String id;
     @When("user clicks on add employee option")
     public void user_clicks_on_add_employee_option() {
         click(dash.addEmployeeOption);
@@ -42,6 +47,8 @@ public class AddEmployeeSteps extends CommonMethods {
 
     @When("user enters {string} , {string} and {string}")
     public void user_enters_and(String firstName, String middleName, String lastName) {
+        this.firstName=firstName;
+        this.lastName=lastName;
         sendText(addEmployeePage.firstName, firstName);
         sendText(addEmployeePage.middleName, middleName);
         sendText(addEmployeePage.lastName, lastName);
@@ -147,4 +154,17 @@ public class AddEmployeeSteps extends CommonMethods {
        }
     }
 
+    @And("user grabs Id")
+    public void userGrabsId() {
+     id= addEmployeePage.empIdLoc.getAttribute("value");
+
+    }
+
+
+    @Then("fetch the data from backend and verify it")
+    public void fetchTheDataFromBackendAndVerifyIt() {
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(id);
+    }
 }

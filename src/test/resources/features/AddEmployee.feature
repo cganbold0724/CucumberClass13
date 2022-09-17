@@ -43,6 +43,18 @@ Feature: This feature is  going to add employees in HRMS application
     When user adds multiple employees from excel file using "employeeData" sheet and verify the employee has added
 
 
+    @db @smoke
+    Scenario: Add employee from frontend and verify it from backend
+      When user enters "Zombi" , "BMW Pati chai" and "Zameer"
+      And user grabs Id
+      And user clicks on save button
+      Then fetch the data from backend and verify it
+
+
+
+
+
+
 
 
 
