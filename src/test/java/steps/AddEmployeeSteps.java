@@ -87,7 +87,6 @@ public class AddEmployeeSteps extends CommonMethods {
             //verify that the employee added
 
         }
-
     }
 
     @When("user adds multiple employees from excel file using {string} sheet and verify the employee has added")
@@ -118,7 +117,6 @@ public class AddEmployeeSteps extends CommonMethods {
 
            //till this point we have added the employee and captured the emp id
            Thread.sleep(4000);
-         //  click(dash.employeeListOption);
            jsClick(dash.employeeListOption);
            Thread.sleep(2000);
            sendText(emp.idEmployeeSearch, empIdValue);
@@ -143,8 +141,6 @@ public class AddEmployeeSteps extends CommonMethods {
            Assert.assertEquals(expectedData, rowText);
 
          }
-
-           //assertion in homework
            Thread.sleep(2000);
            click(dash.addEmployeeOption);
        }
@@ -156,8 +152,6 @@ public class AddEmployeeSteps extends CommonMethods {
 
     }
 
-
-    // break till 11:50
     @Then("fetch the data from backend and verify it")
     public void fetchTheDataFromBackendAndVerifyIt() {
 
@@ -168,7 +162,6 @@ public class AddEmployeeSteps extends CommonMethods {
 
         Assert.assertEquals(firstNameFromUI,firstNameFromDb);
         Assert.assertEquals(lastNameFromUI,lastNameFromDb);
-
 
     }
 }
